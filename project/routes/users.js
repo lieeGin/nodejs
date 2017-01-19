@@ -39,7 +39,7 @@ module.exports = function(app) {
                 afterCheck(dbEntity,userEntity,res);
             })
             .error(function(error){
-                res.render('user/edit',  {user:userEntity,result:error.message});
+                res.render(basePath+'/edit',  {user:userEntity,result:error.message});
             })
     });
 
@@ -52,10 +52,10 @@ module.exports = function(app) {
      */
     function afterCheck(dbEntity,userEntity,res ){
         if(dbEntity){
-            res.render('user/edit',  {user:userEntity,result:"该用户已经存在"});
+            res.render(basePath+'/edit',  {user:userEntity,result:"该用户已经存在"});
         }else{
             userEntity.save();
-            res.render('user/edit',  {user:userEntity,result:"保存成功"});
+            res.render(basePath+'/edit',  {user:userEntity,result:"保存成功"});
         }
     }
 
