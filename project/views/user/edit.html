@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+</head>
+<body>
+<p>
+    <form action="/user/save" method="post">
+    用户名 <input type="text" name="userName" value="<%=user.userName%>"/><br/>
+    手机号 <input type="text" name="mobilePhone" value="<%=user.mobilePhone%>"/><br/>
+    <br/>
+    <span style="color:red">
+        <% if (typeof(result) != 'undefined') { %>
+        <%=result||''%>
+        <%}%>
+    </span>
+    <br/>
+    <button type="submit" > 保存 </button>
+    </form>
+</p>
+</body>
+</html>
