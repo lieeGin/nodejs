@@ -55,7 +55,8 @@ module.exports = function(app) {
             res.render(basePath+'/edit',  {user:userEntity,result:"该用户已经存在"});
         }else{
             userEntity.save();
-            res.render(basePath+'/edit',  {user:userEntity,result:"保存成功"});
+            res.redirect(basePath);
+           // res.render(basePath+'/edit',  {user:userEntity,result:"保存成功"});
         }
     }
 
