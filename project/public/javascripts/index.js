@@ -39381,7 +39381,7 @@ var LoginForm = _react2.default.createClass({
                         _react2.default.createElement(_reactBootstrap.FormControl, {
                             type: 'text',
                             name: 'userName',
-                            value: this.state.value,
+                            value: this.state.userName,
                             placeholder: '\u8BF7\u8F93\u5165\u8D26\u53F7',
                             onChange: this.handleUserNameChange
                         })

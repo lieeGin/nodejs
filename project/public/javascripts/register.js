@@ -39331,7 +39331,8 @@ var RegisterForm = _react2.default.createClass({
         return {
             userName: '',
             password: '',
-            password2: ''
+            password2: '',
+            isLoading: false
         };
     },
     getUserNameValidationState: function getUserNameValidationState() {
@@ -39354,6 +39355,30 @@ var RegisterForm = _react2.default.createClass({
     },
     handlePassword2Change: function handlePassword2Change(e) {
         this.setState({ password2: e.target.value });
+    },
+
+    //提交
+    submit: function submit() {
+        var _this = this;
+
+        console.log('submit');
+        this.setState({ isLoading: true });
+
+        setTimeout(function () {
+            // Completed of async action, set loading state back
+            _this.setState({ isLoading: false });
+        }, 2000);
+    },
+
+    //清空
+    clear: function clear() {
+        console.log('clear');
+        this.setState({
+            userName: '',
+            password: '',
+            password2: '',
+            isLoading: false
+        });
     },
     render: function render() {
 
@@ -39390,7 +39415,7 @@ var RegisterForm = _react2.default.createClass({
                         _react2.default.createElement(_reactBootstrap.FormControl, {
                             type: 'text',
                             name: 'userName',
-                            value: this.state.value,
+                            value: this.state.userName,
                             placeholder: '\u8BF7\u8F93\u5165\u8D26\u53F7',
                             onChange: this.handleUserNameChange
                         })
@@ -39440,7 +39465,7 @@ var RegisterForm = _react2.default.createClass({
                         _react2.default.createElement(_reactBootstrap.FormControl, {
                             type: 'password',
                             name: 'password2',
-                            value: this.state.value,
+                            value: this.state.password2,
                             placeholder: '\u8BF7\u518D\u6B21\u8F93\u5165\u5BC6\u7801',
                             onChange: this.handlePassword2Change
                         })
@@ -39473,14 +39498,19 @@ var RegisterForm = _react2.default.createClass({
                     _reactBootstrap.Col,
                     { xs: 6, xsOffset: 6, md: 4, mdOffset: 7, lg: 4, lgOffset: 7 },
                     _react2.default.createElement(
-                        _reactBootstrap.Button,
-                        { bsStyle: 'primary' },
-                        '\u6CE8\u518C'
-                    ),
-                    _react2.default.createElement(
-                        _reactBootstrap.Button,
+                        _reactBootstrap.ButtonToolbar,
                         null,
-                        '\u91CD\u7F6E'
+                        _react2.default.createElement(
+                            _reactBootstrap.Button,
+                            { bsStyle: 'primary', disabled: this.state.isLoading,
+                                onClick: !this.state.isLoading ? this.submit : null },
+                            '\u6CE8\u518C'
+                        ),
+                        _react2.default.createElement(
+                            _reactBootstrap.Button,
+                            { onClick: this.clear },
+                            '\u91CD\u7F6E'
+                        )
                     )
                 )
             )

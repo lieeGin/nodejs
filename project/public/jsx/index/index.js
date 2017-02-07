@@ -62,7 +62,7 @@ const LoginForm = React.createClass({
                             <FormControl
                                 type="text"
                                 name="userName"
-                                value={this.state.value}
+                                value={this.state.userName}
                                 placeholder="请输入账号"
                                 onChange={this.handleUserNameChange}
                             />

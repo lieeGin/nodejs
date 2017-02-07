@@ -10,6 +10,7 @@ import {
     ControlLabel,
     FormControl,
     Button,
+    ButtonToolbar,
     Col,
     HelpBlock,
     InputGroup,
@@ -22,26 +23,27 @@ const RegisterForm = React.createClass({
         return {
             userName: '',
             password: '',
-            password2:''
+            password2: '',
+            isLoading:false
         };
     },
 
     getUserNameValidationState() {
         var length = this.state.userName.length;
-        if (length==0) return null;
-        else if(length > 2) return 'success';
+        if (length == 0) return null;
+        else if (length > 2) return 'success';
         else return 'error';
     },
     getPasswordValidationState() {
         var length = this.state.password.length;
-        if (length==0 ) return null;
-        else if( length > 8) return 'success';
+        if (length == 0) return null;
+        else if (length > 8) return 'success';
         else return 'error';
     },
     getPassword2ValidationState() {
         var length = this.state.password2.length;
-        if (length==0 ) return null;
-        else if( length > 8 || this.state.password == this.state.password2 ) return 'success';
+        if (length == 0) return null;
+        else if (length > 8 || this.state.password == this.state.password2) return 'success';
         else return 'error';
     },
     handleUserNameChange(e){
@@ -52,6 +54,28 @@ const RegisterForm = React.createClass({
     },
     handlePassword2Change(e) {
         this.setState({password2: e.target.value});
+    },
+    //提交
+    submit(){
+        console.log('submit');
+        this.setState({isLoading: true});
+
+
+        setTimeout(() => {
+            // Completed of async action, set loading state back
+            this.setState({isLoading: false});
+        }, 2000);
+
+    },
+    //清空
+    clear(){
+        console.log('clear');
+        this.setState({
+            userName:'',
+            password:'',
+            password2:'',
+            isLoading:false
+        });
     },
 
     render() {
@@ -73,7 +97,7 @@ const RegisterForm = React.createClass({
                             <FormControl
                                 type="text"
                                 name="userName"
-                                value={this.state.value}
+                                value={this.state.userName}
                                 placeholder="请输入账号"
                                 onChange={this.handleUserNameChange}
                             />
@@ -116,15 +140,18 @@ const RegisterForm = React.createClass({
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formTail">
-                <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
-                    <HelpBlock>已经拥有账号,<a href="/">我要去登录！</a></HelpBlock>
-                </Col>
-                 </FormGroup>
+                    <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
+                        <HelpBlock>已经拥有账号,<a href="/">我要去登录！</a></HelpBlock>
+                    </Col>
+                </FormGroup>
                 <FormGroup controlId="button">
-                        <Col xs={6} xsOffset={6} md={4} mdOffset={7} lg={4} lgOffset={7}>
-                           <Button bsStyle="primary" >注册</Button>
-                           <Button>重置</Button>
-                        </Col>
+                    <Col xs={6} xsOffset={6} md={4} mdOffset={7} lg={4} lgOffset={7}>
+                        <ButtonToolbar>
+                            <Button bsStyle="primary" disabled={this.state.isLoading}
+                                    onClick={!this.state.isLoading ? this.submit : null } >注册</Button>
+                            <Button onClick={this.clear}>重置</Button>
+                        </ButtonToolbar>
+                    </Col>
                 </FormGroup>
             </Form>
         );
