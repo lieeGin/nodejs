@@ -1,8 +1,12 @@
 /**
- * Created by lieeGin on 2017/2/6.
+ * Created by lieeGin on 2017/2/8.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+import {loginActions} from '../actions/LoginActions';
 
 import {
     Form,
@@ -12,38 +16,17 @@ import {
     HelpBlock,
     Col,
     InputGroup,
+    ButtonToolbar,
+    Button,
     Glyphicon
 } from 'react-bootstrap';
 
 
-const LoginForm = React.createClass({
-    getInitialState() {
-        return {
-            userName: '',
-            password: ''
-        };
-    },
-
-    getUserNameValidationState() {
-        const length = this.state.userName.length;
-        if (length==0) return null;
-        else if(length > 2) return 'success';
-        else return 'error';
-    },
-    getPasswordValidationState() {
-        const length = this.state.password.length;
-        if (length==0 ) return null;
-        else if( length > 8) return 'success';
-        else return 'error';
-    },
-    handleUserNameChange(e){
-        this.setState({userName: e.target.value});
-    },
-    handlePasswordChange(e) {
-        this.setState({password: e.target.value});
-    },
+class LoginForm extends React.Component {
 
     render() {
+
+        const {state, loginActions} = this.props
 
         return (
             <Form horizontal>
@@ -53,7 +36,7 @@ const LoginForm = React.createClass({
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="userName" validationState={this.getUserNameValidationState()}>
+                <FormGroup controlId="userName" validationState={state.uiState.userNameValidate}>
                     <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
                         <InputGroup>
                             <InputGroup.Addon>
@@ -62,15 +45,15 @@ const LoginForm = React.createClass({
                             <FormControl
                                 type="text"
                                 name="userName"
-                                value={this.state.userName}
+                                value={state.data.userName}
                                 placeholder="请输入账号"
-                                onChange={this.handleUserNameChange}
+                                onChange={loginActions.userNameChange}
                             />
                         </InputGroup>
                         <FormControl.Feedback />
                     </Col>
                 </FormGroup>
-                <FormGroup controlId="password" validationState={this.getPasswordValidationState()}>
+                <FormGroup controlId="password" validationState={state.uiState.passwordValidate}>
                     <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
                         <InputGroup>
                             <InputGroup.Addon>
@@ -79,29 +62,45 @@ const LoginForm = React.createClass({
                             <FormControl
                                 type="password"
                                 name="password"
-                                value={this.state.password}
+                                value={state.data.password}
                                 placeholder="请输入密码"
-                                onChange={this.handlePasswordChange}
+                                onChange={loginActions.passwordChange}
                             />
                         </InputGroup>
                         <FormControl.Feedback />
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formTail">
-                        <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
-                            <HelpBlock>还没有账号？<a href="/register">快来注册！</a></HelpBlock>
-                        </Col>
+                    <Col xs={8} xsOffset={2} md={4} mdOffset={4} lg={4} lgOffset={4}>
+                        <HelpBlock>还没有账号？<a href="/register">快来注册！</a></HelpBlock>
+                    </Col>
+                </FormGroup>
+                <FormGroup controlId="button">
+                    <Col xs={6} xsOffset={6} md={4} mdOffset={7} lg={4} lgOffset={7}>
+                        <ButtonToolbar>
+                            <Button bsStyle="primary" disabled={state.uiState.isLoading}
+                                    onClick={() => loginActions.login()}>登录</Button>
+                        </ButtonToolbar>
+                    </Col>
                 </FormGroup>
             </Form>
         );
     }
-});
 
-ReactDOM.render(
-    // React.createElement(loginForm, null),
-    <LoginForm/>,
-    document.getElementById('content')
-);
+}
 
 
+function getState(state) {
+    return {
+        state: state
+    }
+}
+
+function buildActionDispatcher(dispatch) {
+    return {
+        loginActions: bindActionCreators(loginActions, dispatch)
+    }
+}
+
+export default connect(getState, buildActionDispatcher)(LoginForm);
 

@@ -1,5 +1,4 @@
 var util = require('util');
-var systemConfig = require('../config/config');
 
 /**
  * index module
@@ -16,6 +15,11 @@ module.exports = function(app) {
 
     app.get('/register',function(req, res, next){
         res.render('user/register');
+    });
+
+    app.get('/test',function(req, res, next){
+        var data={"success":"true","data":[1,2,3,4,5]}
+        res.json(data);
     });
 
 };

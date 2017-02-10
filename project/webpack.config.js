@@ -4,8 +4,8 @@
 var webpack = require('webpack');
 module.exports = {
     entry: {
-        ginUI: './public/jsx/base/ginUI.js',
         index: './public/jsx/index/index.js',
+        index2: './public/jsx/index/index2.js',
         register: './public/jsx/user/register.js'
     },
     output: {
