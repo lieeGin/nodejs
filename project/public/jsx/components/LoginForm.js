@@ -6,7 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {loginActions} from '../actions/LoginActions';
+import {loginActions} from '../actions/loginActions';
 
 import {
     Form,
@@ -79,7 +79,8 @@ class LoginForm extends React.Component {
                     <Col xs={6} xsOffset={6} md={4} mdOffset={7} lg={4} lgOffset={7}>
                         <ButtonToolbar>
                             <Button bsStyle="primary" disabled={state.uiState.isLoading}
-                                    onClick={() => loginActions.login()}>登录</Button>
+                                    onClick={loginActions.login}>登录</Button>
+                            <Button onClick={loginActions.clear}>重置</Button>
                         </ButtonToolbar>
                     </Col>
                 </FormGroup>
