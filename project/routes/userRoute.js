@@ -76,7 +76,9 @@ module.exports = function (app) {
         userEntity.login()
             .then(function (rm) {
                 if(rm.success){  // 登录成功
-                    req.session.user = rm;
+                    req.session.user = rm.data;
+
+                    console.log('session input :'+ JSON.stringify(req.session));
                     res.cookie('sessionId',rm.data.sessionId);
                 }
                 res.json(rm);

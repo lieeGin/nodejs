@@ -34,6 +34,7 @@ export const loginActions = {
                 if(data.success){
                     // 跳转
                     console.log('登录成功');
+                    location.href='/home';
                 }
             })
             .catch((e) => {

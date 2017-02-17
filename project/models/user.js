@@ -54,8 +54,8 @@ UserSchema.method({
                     var p = md5(loginPassword)
                     if (p == promiseResult.password) {
 
-                        var sessionId  = uuid.v1().toString();
-                        sessionId = sessionId.replace(/-/g,'');
+                        var sessionId = uuid.v1().toString();
+                        sessionId = sessionId.replace(/-/g, '');
                         promiseResult.sessionId = sessionId;
                         promiseResult.save();  // 更新sessionID
 

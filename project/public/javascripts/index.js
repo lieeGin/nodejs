@@ -47290,8 +47290,8 @@ exports.default = function () {
             isLoading: false
         },
         data: {
-            userName: '张三',
-            password: '123'
+            userName: 'lieeGin',
+            password: '123456'
         }
     };
     var action = arguments[1];
@@ -47390,6 +47390,7 @@ var loginActions = exports.loginActions = {
                 if (data.success) {
                     // 跳转
                     console.log('登录成功');
+                    location.href = '/home';
                 }
             }).catch(function (e) {
                 var d = new Object();

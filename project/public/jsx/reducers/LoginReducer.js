@@ -10,8 +10,8 @@ export default (state = {
         isLoading: false
     },
     data: {
-        userName: '张三',
-        password: '123',
+        userName: 'lieeGin',
+        password: '123456',
     }
 }, action) => {
 

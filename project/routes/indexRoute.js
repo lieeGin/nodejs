@@ -14,7 +14,18 @@ module.exports = function(app) {
     });
 
     app.get('/register',function(req, res, next){
-        res.render('user/register');
+        res.render('register');
+    });
+
+    app.get('/home',function(req, res, next){
+        req.session.user =  req.session.user;
+        var sessionUser = req.session.user;
+        console.log('session output :'+ req.session.user);
+        if(sessionUser){
+            res.render('home',{'userName':sessionUser.userName});
+        }else{
+            res.redirect('/');
+        }
     });
 
     app.get('/test',function(req, res, next){
