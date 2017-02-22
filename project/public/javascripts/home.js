@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/public/javascripts/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 484);
+/******/ 	return __webpack_require__(__webpack_require__.s = 482);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -47088,9 +47088,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 473 */,
-/* 474 */,
-/* 475 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47110,7 +47108,7 @@ var _reactRedux = __webpack_require__(129);
 
 var _redux = __webpack_require__(80);
 
-var _registerActions = __webpack_require__(481);
+var _homeActions = __webpack_require__(479);
 
 var _reactBootstrap = __webpack_require__(361);
 
@@ -47121,220 +47119,151 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lieeGin on 2017/2/13.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lieeGin on 2017/2/20.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 
-var RegisterForm = function (_React$Component) {
-    _inherits(RegisterForm, _React$Component);
+var HomePage = function (_React$Component) {
+    _inherits(HomePage, _React$Component);
 
-    function RegisterForm() {
-        _classCallCheck(this, RegisterForm);
+    function HomePage() {
+        _classCallCheck(this, HomePage);
 
-        return _possibleConstructorReturn(this, (RegisterForm.__proto__ || Object.getPrototypeOf(RegisterForm)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).apply(this, arguments));
     }
 
-    _createClass(RegisterForm, [{
+    _createClass(HomePage, [{
         key: 'render',
         value: function render() {
             var _props = this.props,
                 state = _props.state,
-                registerActions = _props.registerActions;
+                homeActions = _props.homeActions;
 
 
             return _react2.default.createElement(
-                _reactBootstrap.Form,
-                { horizontal: true },
+                'div',
+                { style: { height: '100%' } },
                 _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'formTitle' },
+                    _reactBootstrap.PageHeader,
+                    { style: { textAlign: 'center' } },
+                    '\u771F\u5B9E\u662F\u7F8E\u597D\u7684\u4E00\u5929!',
                     _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 8, xsOffset: 2, md: 4, mdOffset: 4, lg: 4, lgOffset: 4 },
-                        _react2.default.createElement(
-                            _reactBootstrap.ControlLabel,
-                            null,
-                            '\u8BF7\u586B\u5199\u6CE8\u518C\u4FE1\u606F'
-                        )
+                        'small',
+                        null,
+                        'What a nice day.'
                     )
                 ),
                 _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'userName', validationState: state.uiState.userNameValidate },
-                    _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 8, xsOffset: 2, md: 4, mdOffset: 4, lg: 4, lgOffset: 4 },
-                        _react2.default.createElement(
-                            _reactBootstrap.InputGroup,
+                    _reactBootstrap.Grid,
+                    { style: { display: state.uiState.chatListShow } },
+                    state.data.chatList.map(function (chat, index) {
+                        return _react2.default.createElement(
+                            _reactBootstrap.Row,
                             null,
                             _react2.default.createElement(
-                                _reactBootstrap.InputGroup.Addon,
-                                null,
-                                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'user' })
+                                _reactBootstrap.Col,
+                                { xs: 1, xsOffset: 3, md: 1, mdOffset: 3, lg: 1, lgOffset: 3 },
+                                _react2.default.createElement(_reactBootstrap.Image, { src: '/images/head1.jpg', circle: true, style: { height: '40px' } })
                             ),
-                            _react2.default.createElement(_reactBootstrap.FormControl, {
-                                type: 'text',
-                                name: 'userName',
-                                value: state.data.userName,
-                                placeholder: '\u8BF7\u8F93\u5165\u8D26\u53F7',
-                                onChange: registerActions.userNameChange
-                            })
-                        ),
-                        _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null),
-                        _react2.default.createElement(
-                            'span',
-                            { style: {
-                                    color: 'red',
-                                    display: state.uiState.userNameTip
-                                } },
-                            state.uiState.userNameTipText
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'password', validationState: state.uiState.passwordValidate },
-                    _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 8, xsOffset: 2, md: 4, mdOffset: 4, lg: 4, lgOffset: 4 },
-                        _react2.default.createElement(
-                            _reactBootstrap.InputGroup,
-                            null,
                             _react2.default.createElement(
-                                _reactBootstrap.InputGroup.Addon,
-                                null,
-                                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'lock' })
-                            ),
-                            _react2.default.createElement(_reactBootstrap.FormControl, {
-                                type: 'password',
-                                name: 'password',
-                                value: state.data.password,
-                                placeholder: '\u8BF7\u8F93\u5165\u5BC6\u7801',
-                                onChange: registerActions.passwordChange
-                            })
-                        ),
-                        _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null),
-                        _react2.default.createElement(
-                            'span',
-                            { style: {
-                                    color: 'red',
-                                    display: state.uiState.passwordTip
-                                } },
-                            state.uiState.passwordTipText
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'password2', validationState: state.uiState.password2Validate },
-                    _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 8, xsOffset: 2, md: 4, mdOffset: 4, lg: 4, lgOffset: 4 },
-                        _react2.default.createElement(
-                            _reactBootstrap.InputGroup,
-                            null,
-                            _react2.default.createElement(
-                                _reactBootstrap.InputGroup.Addon,
-                                null,
-                                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'lock' })
-                            ),
-                            _react2.default.createElement(_reactBootstrap.FormControl, {
-                                type: 'password',
-                                name: 'password2',
-                                value: state.data.password2,
-                                placeholder: '\u8BF7\u518D\u6B21\u8F93\u5165\u5BC6\u7801',
-                                onChange: registerActions.password2Change
-                            })
-                        ),
-                        _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null),
-                        _react2.default.createElement(
-                            'span',
-                            { style: {
-                                    color: 'red',
-                                    display: state.uiState.password2Tip
-                                } },
-                            state.uiState.password2TipText
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'formTail' },
-                    _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 8, xsOffset: 2, md: 4, mdOffset: 4, lg: 4, lgOffset: 4 },
-                        _react2.default.createElement(
-                            _reactBootstrap.HelpBlock,
-                            null,
-                            '\u5DF2\u7ECF\u62E5\u6709\u8D26\u53F7\uFF0C',
-                            _react2.default.createElement(
-                                'a',
-                                { href: '/' },
-                                '\u6211\u8981\u53BB\u767B\u5F55\uFF01'
+                                _reactBootstrap.Col,
+                                { xs: 3, md: 3, lg: 3, style: { borderBottom: '1px solid gray' } },
+                                _react2.default.createElement(
+                                    _reactBootstrap.Col,
+                                    { xs: 10, md: 10, lg: 10 },
+                                    _react2.default.createElement(
+                                        _reactBootstrap.Row,
+                                        null,
+                                        _react2.default.createElement(
+                                            'b',
+                                            null,
+                                            '\u5F20\u4E09'
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        _reactBootstrap.Row,
+                                        null,
+                                        _react2.default.createElement(
+                                            'small',
+                                            { style: { color: 'gray' } },
+                                            '\u5728\u5E72\u5417'
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    _reactBootstrap.Col,
+                                    { xs: 2, md: 2, lg: 2, style: { textAlign: 'center' } },
+                                    '15:50'
+                                )
                             )
-                        )
-                    )
+                        );
+                    })
                 ),
                 _react2.default.createElement(
-                    _reactBootstrap.FormGroup,
-                    { controlId: 'button' },
-                    _react2.default.createElement(
-                        _reactBootstrap.Col,
-                        { xs: 6, xsOffset: 6, md: 4, mdOffset: 7, lg: 4, lgOffset: 7 },
-                        _react2.default.createElement(
-                            _reactBootstrap.ButtonToolbar,
+                    _reactBootstrap.Grid,
+                    { style: { display: state.uiState.contactListShow } },
+                    state.data.contactList.map(function (chat, index) {
+                        return _react2.default.createElement(
+                            _reactBootstrap.Row,
                             null,
                             _react2.default.createElement(
-                                _reactBootstrap.Button,
-                                { bsStyle: 'primary', disabled: state.uiState.isLoading,
-                                    onClick: !state.uiState.isLoading ? registerActions.submit : null },
-                                '\u6CE8\u518C'
+                                _reactBootstrap.Col,
+                                { xs: 1, xsOffset: 3, md: 1, mdOffset: 3, lg: 1, lgOffset: 3 },
+                                _react2.default.createElement(_reactBootstrap.Image, { src: '/images/head1.jpg', circle: true, style: { height: '40px' } })
                             ),
                             _react2.default.createElement(
-                                _reactBootstrap.Button,
-                                { onClick: registerActions.clear },
-                                '\u91CD\u7F6E'
+                                _reactBootstrap.Col,
+                                { xs: 5, md: 5, lg: 5, style: { borderBottom: '1px solid gray' } },
+                                _react2.default.createElement(
+                                    _reactBootstrap.Col,
+                                    { xs: 10, md: 10, lg: 10 },
+                                    _react2.default.createElement(
+                                        _reactBootstrap.Row,
+                                        null,
+                                        _react2.default.createElement(
+                                            'b',
+                                            null,
+                                            '\u674E\u56DB'
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        _reactBootstrap.Row,
+                                        null,
+                                        _react2.default.createElement(
+                                            'small',
+                                            { style: { color: 'gray' } },
+                                            '\u90FD\u6BD4\u4E00\u4E2A'
+                                        )
+                                    )
+                                )
                             )
-                        )
-                    )
+                        );
+                    })
                 ),
                 _react2.default.createElement(
-                    _reactBootstrap.Modal,
-                    {
-                        show: state.uiState.modalShow,
-                        onHide: registerActions.closeModal,
-                        container: this,
-                        'aria-labelledby': 'contained-modal-title'
-                    },
+                    _reactBootstrap.Row,
+                    { style: { textAlign: 'center', position: 'fixed', bottom: '0px', marginLeft: '30%' } },
                     _react2.default.createElement(
-                        _reactBootstrap.Modal.Header,
-                        { closeButton: true },
-                        _react2.default.createElement(
-                            _reactBootstrap.Modal.Title,
-                            { id: 'contained-modal-title' },
-                            '\u63D0\u793A'
-                        )
+                        _reactBootstrap.Col,
+                        { xs: 2, xsOffset: 3, md: 2, mdOffset: 3, lg: 2, lgOffset: 3, style: { textAlign: 'center' } },
+                        '\u6D88\u606F'
                     ),
                     _react2.default.createElement(
-                        _reactBootstrap.Modal.Body,
-                        null,
-                        state.uiState.modalText
+                        _reactBootstrap.Col,
+                        { xs: 2, md: 2, lg: 2, style: { textAlign: 'center' } },
+                        '\u8054\u7CFB\u4EBA'
                     ),
                     _react2.default.createElement(
-                        _reactBootstrap.Modal.Footer,
-                        null,
-                        _react2.default.createElement(
-                            _reactBootstrap.Button,
-                            { bsStyle: 'primary', onClick: registerActions.closeModal },
-                            '\u786E\u5B9A'
-                        )
+                        _reactBootstrap.Col,
+                        { xs: 2, md: 2, lg: 2, style: { textAlign: 'center' } },
+                        '\u6211'
                     )
                 )
             );
         }
     }]);
 
-    return RegisterForm;
+    return HomePage;
 }(_react2.default.Component);
 
 function getState(state) {
@@ -47345,16 +47274,16 @@ function getState(state) {
 
 function buildActionDispatcher(dispatch) {
     return {
-        registerActions: (0, _redux.bindActionCreators)(_registerActions.registerActions, dispatch)
+        homeActions: (0, _redux.bindActionCreators)(_homeActions.homeActions, dispatch)
     };
 }
 
-exports.default = (0, _reactRedux.connect)(getState, buildActionDispatcher)(RegisterForm);
+exports.default = (0, _reactRedux.connect)(getState, buildActionDispatcher)(HomePage);
 
 /***/ }),
-/* 476 */,
-/* 477 */,
-/* 478 */
+/* 474 */,
+/* 475 */,
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47366,95 +47295,36 @@ Object.defineProperty(exports, "__esModule", {
 
 var _immutable = __webpack_require__(291);
 
-var prefix = 'register/'; /**
-                           * Created by lieeGin on 2017/2/13.
-                           */
+var prefix = 'home/'; /**
+                       * Created by lieeGin on 2017/2/20.
+                       */
 
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
         uiState: {
-            userNameValidate: null,
-            userNameTip: 'none',
-            userNameTipText: '用户名长度至少大于2',
-            passwordValidate: null,
-            passwordTip: 'none',
-            passwordTipText: '密码长度至少大于6位',
-            password2Validate: null,
-            password2Tip: 'none',
-            password2TipText: '两次输入密码不一致',
-            isLoading: false,
-            modalShow: false,
-            modalText: ''
+            chatListShow: 'block', // 聊天列表是否显示
+            contactListShow: 'none', // 所有联系人是否显示
+            isLoading: false
         },
         data: {
-            userName: '',
-            password: '',
-            password2: ''
-        }
+            chatList: [{ 'id': 1111 }], // 最近聊天列表
+            contactList: [{ 'id': 222 }] }
     };
     var action = arguments[1];
 
 
     switch (action.type) {
-        case prefix + 'REGISTER':
-            // 注册
+        case prefix + 'CHANGE_PAGE':
             return (0, _immutable.fromJS)(state).setIn(['uiState', 'isLoading'], true).toJS();
-        case prefix + 'REGISTER_DONE':
-            // 注册完成
-            console.log('返回数据' + action.data);
-            return (0, _immutable.fromJS)(state).setIn(['uiState', 'isLoading'], false).setIn(['uiState', 'modalShow'], true).setIn(['uiState', 'modalText'], action.data.msg).toJS();
-        case prefix + 'CLOSE_MODAL':
-            return (0, _immutable.fromJS)(state).setIn(['uiState', 'modalShow'], false).toJS();
-        case prefix + 'OPEN_MODAL':
-            return (0, _immutable.fromJS)(state).setIn(['uiState', 'modalShow'], true).setIn(['uiState', 'modalText'], action.text).toJS();
-        case prefix + 'CLEAR':
-            return (0, _immutable.fromJS)(state).setIn(['uiState', 'isLoading'], false).setIn(['uiState', 'userNameValidate'], null).setIn(['uiState', 'passwordValidate'], null).setIn(['uiState', 'password2Validate'], null).setIn(['data', 'userName'], '').setIn(['data', 'password'], '').setIn(['data', 'password2'], '').toJS();
-        case prefix + 'USER_NAME_CHANGE':
-            // 监听用户名框修改
-            var validate = null;
-            var tip = 'none';
-            var length = action.userName.length;
-            if (length > 2) {
-                validate = 'success';
-            } else {
-                tip = 'block';
-                validate = 'error';
-            }
-            return (0, _immutable.fromJS)(state).setIn(['data', 'userName'], action.userName).setIn(['uiState', 'userNameValidate'], validate).setIn(['uiState', 'userNameTip'], tip).toJS();
-        case prefix + 'PASSWORD_CHANGE':
-            // 监听密码框修改
-            var validate = null;
-            var tip = 'none';
-            var length = action.password.length;
-            if (length >= 6) {
-                validate = 'success';
-            } else {
-                tip = 'block';
-                validate = 'error';
-            }
-            return (0, _immutable.fromJS)(state).setIn(['data', 'password'], action.password).setIn(['uiState', 'passwordValidate'], validate).setIn(['uiState', 'passwordTip'], tip).toJS();
-        case prefix + 'PASSWORD2_CHANGE':
-            // 监听密码框修改
-            var validate = null;
-            var tip = 'none';
-            var password = (0, _immutable.fromJS)(state).getIn(['data', 'password']);
-            var password2 = action.password2;
-            if (password == password2) {
-                validate = 'success';
-            } else {
-                tip = 'block';
-                validate = 'error';
-            }
-            return (0, _immutable.fromJS)(state).setIn(['data', 'password2'], action.password2).setIn(['uiState', 'password2Validate'], validate).setIn(['uiState', 'password2Tip'], tip).toJS();
         default:
             return state;
     }
 };
 
 /***/ }),
-/* 479 */,
-/* 480 */,
-/* 481 */
+/* 477 */,
+/* 478 */,
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47463,7 +47333,7 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.registerActions = undefined;
+exports.homeActions = undefined;
 
 var _isomorphicFetch = __webpack_require__(292);
 
@@ -47477,93 +47347,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //这是名空间，对普通action做划分
 /**
- * Created by lieeGin on 2017/2/13.
+ * Created by lieeGin on 2017/2/20.
  */
-var prefix = 'register/';
+var prefix = 'home/';
 
-var registerActions = exports.registerActions = {
+var homeActions = exports.homeActions = {
 
-    register: function register() {
+    changePage: function changePage(page) {
         return {
-            type: prefix + 'REGISTER'
-        };
-    },
-    registerDone: function registerDone(data) {
-        return {
-            type: prefix + 'REGISTER_DONE',
-            data: data
-        };
-    },
-    clear: function clear() {
-        return {
-            type: prefix + 'CLEAR'
-        };
-    },
-    userNameChange: function userNameChange(e) {
-        return {
-            type: prefix + 'USER_NAME_CHANGE',
-            userName: e.target.value
-        };
-    },
-    passwordChange: function passwordChange(e) {
-        return {
-            type: prefix + 'PASSWORD_CHANGE',
-            password: e.target.value
-        };
-    },
-    password2Change: function password2Change(e) {
-        return {
-            type: prefix + 'PASSWORD2_CHANGE',
-            password2: e.target.value
-        };
-    },
-    closeModal: function closeModal() {
-        return {
-            type: prefix + 'CLOSE_MODAL'
-        };
-    },
-    openModal: function openModal(text) {
-        return {
-            type: prefix + 'OPEN_MODAL',
-            text: text
-        };
-    },
-    submit: function submit() {
-        return function (dispatch, getState) {
-            var stateData = getState();
-            if (stateData.uiState.userNameTip == 'block' || stateData.uiState.passwordTip == 'block' || stateData.uiState.password2Tip == 'block') {
-                return;
-            }
-
-            var submitData = new Object();
-            submitData.userName = stateData.data.userName;
-            submitData.password = stateData.data.password;
-
-            dispatch(registerActions.register());
-            var aa = (0, _isomorphicFetch2.default)(_config2.default.basePath + 'user/register', {
-                credentials: 'same-origin', // 保证请求时会带上cookie
-                method: "POST",
-                body: JSON.stringify(submitData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(function (res) {
-                return res.json();
-            }).then(function (data) {
-                dispatch(registerActions.registerDone(data));
-            }).catch(function (e) {
-                var d = new Object();
-                d.success = false;
-                dispatch(registerActions.registerDone(d));
-            });
+            type: prefix + 'CHANGE_PAGE',
+            page: page
         };
     }
 };
 
 /***/ }),
-/* 482 */,
-/* 483 */,
-/* 484 */
+/* 480 */,
+/* 481 */,
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47587,25 +47388,25 @@ var _reduxThunk = __webpack_require__(211);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _registerForm = __webpack_require__(475);
+var _homePage = __webpack_require__(473);
 
-var _registerForm2 = _interopRequireDefault(_registerForm);
+var _homePage2 = _interopRequireDefault(_homePage);
 
-var _registerReducer = __webpack_require__(478);
+var _homeReducer = __webpack_require__(476);
 
-var _registerReducer2 = _interopRequireDefault(_registerReducer);
+var _homeReducer2 = _interopRequireDefault(_homeReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Created by lieeGin on 2017/2/13.
+ * Created by lieeGin on 2017/2/20.
  */
-var store = (0, _redux.createStore)(_registerReducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _middlewares.logger));
+var store = (0, _redux.createStore)(_homeReducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, _middlewares.logger));
 
 _reactDom2.default.render(_react2.default.createElement(
     _reactRedux.Provider,
     { store: store },
-    _react2.default.createElement(_registerForm2.default, null)
+    _react2.default.createElement(_homePage2.default, null)
 ), document.getElementById('content'));
 
 /***/ })

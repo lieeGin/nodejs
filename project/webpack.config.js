@@ -5,7 +5,8 @@ var webpack = require('webpack');
 module.exports = {
     entry: {
         index: './public/jsx/index/index.js',
-        register: './public/jsx/index/register.js'
+        register: './public/jsx/index/register.js',
+        home: './public/jsx/index/home.js',
     },
     output: {
         path: __dirname + '/public/javascripts/',

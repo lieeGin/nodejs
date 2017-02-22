@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/public/javascripts/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 479);
+/******/ 	return __webpack_require__(__webpack_require__.s = 483);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -47088,7 +47088,8 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 473 */
+/* 473 */,
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47108,7 +47109,7 @@ var _reactRedux = __webpack_require__(129);
 
 var _redux = __webpack_require__(80);
 
-var _loginActions = __webpack_require__(477);
+var _loginActions = __webpack_require__(480);
 
 var _reactBootstrap = __webpack_require__(361);
 
@@ -47269,8 +47270,9 @@ function buildActionDispatcher(dispatch) {
 exports.default = (0, _reactRedux.connect)(getState, buildActionDispatcher)(LoginForm);
 
 /***/ }),
-/* 474 */,
-/* 475 */
+/* 475 */,
+/* 476 */,
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47335,8 +47337,9 @@ exports.default = function () {
     */
 
 /***/ }),
-/* 476 */,
-/* 477 */
+/* 478 */,
+/* 479 */,
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47378,6 +47381,7 @@ var loginActions = exports.loginActions = {
 
             dispatch(loginActions.logining());
             var aa = (0, _isomorphicFetch2.default)(_config2.default.basePath + 'user/login', {
+                credentials: 'same-origin', // 保证请求时会带上cookie
                 method: "POST",
                 body: JSON.stringify(submitData),
                 headers: {
@@ -47430,8 +47434,9 @@ var loginActions = exports.loginActions = {
 };
 
 /***/ }),
-/* 478 */,
-/* 479 */
+/* 481 */,
+/* 482 */,
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47455,11 +47460,11 @@ var _reduxThunk = __webpack_require__(211);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _loginForm = __webpack_require__(473);
+var _loginForm = __webpack_require__(474);
 
 var _loginForm2 = _interopRequireDefault(_loginForm);
 
-var _loginReducer = __webpack_require__(475);
+var _loginReducer = __webpack_require__(477);
 
 var _loginReducer2 = _interopRequireDefault(_loginReducer);
 

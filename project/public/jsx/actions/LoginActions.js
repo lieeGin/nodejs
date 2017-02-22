@@ -22,6 +22,7 @@ export const loginActions = {
         dispatch(loginActions.logining());
         var aa = fetch(config.basePath + 'user/login',
             {
+                credentials: 'same-origin',  // 保证请求时会带上cookie
                 method: "POST",
                 body: JSON.stringify(submitData),
                 headers: {

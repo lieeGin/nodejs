@@ -51,6 +51,7 @@ export const registerActions = {
         dispatch(registerActions.register());
         var aa = fetch(config.basePath + 'user/register',
             {
+                credentials: 'same-origin', // 保证请求时会带上cookie
                 method: "POST",
                 body: JSON.stringify(submitData),
                 headers: {

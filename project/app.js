@@ -22,28 +22,28 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));    //指定静态资源在public下面
-app.use(cookieParser());
+app.use(cookieParser('key_liee'));
 app.use(session({
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    key:'key_liee',
+    key: 'key_liee',
     secret: 'lieeGin',
-    cookie: {maxAge: 80000 },
-    store: new MongoStore({   //创建新的mongodb数据库
-        url: 'mongodb://localhost:27017/nodedb'
-    })
+    cookie: {},
 }));
 
 app.use(function (req, res, next) {  // 拦截session
-    console.log('session ：'+JSON.stringify(req.session));
+    console.log('session ：' + req.sessionID + '--' + req.url + '' + JSON.stringify(req.session));
     if (!req.session.user) {
-        if (req.url == "/user/login" || req.url == "/user/register" || req.url == "/") {
+        if (req.url == "/user/login" || req.url == "/user/register" || req.url == "/" || req.url == "/register") {
             next();//如果请求的地址是登录则通过，进行下一个请求
         }
         else {
             res.redirect('/');
         }
     } else if (req.session.user) {
+        if( req.url == "/" ){  // 有登录的情况直接进入到首页
+            res.redirect('/home');
+        }
         next();
     }
 });
